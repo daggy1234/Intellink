@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/cognitive-complexity */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable sonarjs/no-duplicate-string */
 
@@ -67,6 +69,7 @@ export default function Login() {
           .eq('user_id', session.user.id);
         if (data) {
           const plyr = data[0];
+          // @ts-ignore
           setUser(plyr);
         }
       }
@@ -142,8 +145,10 @@ export default function Login() {
           <Form>
             <Stack spacing={4}>
               <Field name="name">
-                {({ field }) => (
-                  <FormControl isInvalid={errors.name && touched.name}>
+                {({ field }: { field: any }) => (
+                  <FormControl
+                    isInvalid={(errors.name && touched.name) || false}
+                  >
                     <FormLabel htmlFor="name">Name</FormLabel>
                     <Input {...field} id="name" />
                     <FormErrorMessage>{errors.name}</FormErrorMessage>
@@ -151,8 +156,10 @@ export default function Login() {
                 )}
               </Field>
               <Field name="gender">
-                {({ field }) => (
-                  <FormControl isInvalid={errors.gender && touched.gender}>
+                {({ field }: { field: any }) => (
+                  <FormControl
+                    isInvalid={(errors.gender && touched.gender) || false}
+                  >
                     <FormLabel htmlFor="gender">Gender</FormLabel>
                     <Select {...field} id="gender" placeholder="Select gender">
                       <option value="male">Male</option>
@@ -165,9 +172,11 @@ export default function Login() {
               </Field>
 
               <Field name="university">
-                {({ field }) => (
+                {({ field }: { field: any }) => (
                   <FormControl
-                    isInvalid={errors.university && touched.university}
+                    isInvalid={
+                      (errors.university && touched.university) || false
+                    }
                   >
                     <FormLabel htmlFor="university">University</FormLabel>
                     <Input {...field} id="university" />
@@ -177,7 +186,7 @@ export default function Login() {
               </Field>
 
               <Field name="researchCategory">
-                {({ field, form }) => (
+                {({ field, form }: { field: any; form: any }) => (
                   <FormControl
                     isInvalid={
                       form.errors.researchCategory &&
@@ -212,9 +221,11 @@ export default function Login() {
               </Field>
 
               <Field name="subInterests">
-                {({ field }) => (
+                {({ field }: { field: any }) => (
                   <FormControl
-                    isInvalid={errors.subInterests && touched.subInterests}
+                    isInvalid={
+                      (errors.subInterests && touched.subInterests) || false
+                    }
                   >
                     <FormLabel htmlFor="subInterests">Sub Interests</FormLabel>
                     <Textarea {...field} id="subInterests" />
@@ -224,8 +235,10 @@ export default function Login() {
               </Field>
 
               <Field name="position">
-                {({ field }) => (
-                  <FormControl isInvalid={errors.position && touched.position}>
+                {({ field }: { field: any }) => (
+                  <FormControl
+                    isInvalid={(errors.position && touched.position) || false}
+                  >
                     <FormLabel htmlFor="position">Position</FormLabel>
                     <Select
                       {...field}
@@ -243,8 +256,8 @@ export default function Login() {
               </Field>
 
               <Field name="lab">
-                {({ field }) => (
-                  <FormControl isInvalid={errors.lab && touched.lab}>
+                {({ field }: { field: any }) => (
+                  <FormControl isInvalid={(errors.lab && touched.lab) || false}>
                     <FormLabel htmlFor="lab">Lab</FormLabel>
                     <Select {...field} id="lab" placeholder="Select lab">
                       {labs.map((v) => {
@@ -260,8 +273,8 @@ export default function Login() {
               </Field>
 
               <Field name="cv">
-                {({ field }) => (
-                  <FormControl isInvalid={errors.cv && touched.cv}>
+                {({ field }: { field: any }) => (
+                  <FormControl isInvalid={(errors.cv && touched.cv) || false}>
                     <FormLabel htmlFor="cv">Attach CV (URL)</FormLabel>
                     <Input {...field} id="cv" />
                     <FormErrorMessage>{errors.cv}</FormErrorMessage>
@@ -271,8 +284,10 @@ export default function Login() {
               <Heading>Extra Links</Heading>
               {/* Attach up to 3 links */}
               <Field name="link1">
-                {({ field }) => (
-                  <FormControl isInvalid={errors.link1 && touched.link1}>
+                {({ field }: { field: any }) => (
+                  <FormControl
+                    isInvalid={(errors.link1 && touched.link1) || false}
+                  >
                     <FormLabel htmlFor="link1">Link 1</FormLabel>
                     <Input {...field} id="link1" />
                     <FormErrorMessage>{errors.link1}</FormErrorMessage>
@@ -280,8 +295,10 @@ export default function Login() {
                 )}
               </Field>
               <Field name="link2">
-                {({ field }) => (
-                  <FormControl isInvalid={errors.link2 && touched.link2}>
+                {({ field }: { field: any }) => (
+                  <FormControl
+                    isInvalid={(errors.link2 && touched.link2) || false}
+                  >
                     <FormLabel htmlFor="link2">Link 2</FormLabel>
                     <Input {...field} id="link2" />
                     <FormErrorMessage>{errors.link2}</FormErrorMessage>
@@ -289,8 +306,10 @@ export default function Login() {
                 )}
               </Field>
               <Field name="link3">
-                {({ field }) => (
-                  <FormControl isInvalid={errors.link3 && touched.link3}>
+                {({ field }: { field: any }) => (
+                  <FormControl
+                    isInvalid={(errors.link3 && touched.link3) || false}
+                  >
                     <FormLabel htmlFor="link3">Link 3</FormLabel>
                     <Input {...field} id="link3" />
                     <FormErrorMessage>{errors.link3}</FormErrorMessage>

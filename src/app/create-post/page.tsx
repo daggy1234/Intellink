@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 'use client';
 
 // Adjust the necessary imports if any new components are used
@@ -148,8 +150,10 @@ export default function CreatePost() {
               <Stack spacing={4}>
                 {/* Title Field */}
                 <Field name="title">
-                  {({ field }) => (
-                    <FormControl isInvalid={errors.title && touched.title}>
+                  {({ field }: { field: any }) => (
+                    <FormControl
+                      isInvalid={(errors.title && touched.title) || false}
+                    >
                       <FormLabel htmlFor="title">Title</FormLabel>
                       <Input {...field} id="title" />
                       <FormErrorMessage>{errors.title}</FormErrorMessage>
@@ -159,8 +163,10 @@ export default function CreatePost() {
 
                 {/* Request Field */}
                 <Field name="request">
-                  {({ field }) => (
-                    <FormControl isInvalid={errors.request && touched.request}>
+                  {({ field }: { field: any }) => (
+                    <FormControl
+                      isInvalid={(errors.request && touched.request) || false}
+                    >
                       <FormLabel htmlFor="request">Request</FormLabel>
                       <Textarea {...field} id="request" />
                       <FormErrorMessage>{errors.request}</FormErrorMessage>
@@ -170,11 +176,12 @@ export default function CreatePost() {
 
                 {/* Extended Description Field */}
                 <Field name="extended_description">
-                  {({ field }) => (
+                  {({ field }: { field: any }) => (
                     <FormControl
                       isInvalid={
-                        errors.extended_description &&
-                        touched.extended_description
+                        (errors.extended_description &&
+                          touched.extended_description) ||
+                        false
                       }
                     >
                       <FormLabel htmlFor="extended_description">

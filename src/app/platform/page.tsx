@@ -25,8 +25,12 @@ export default async function Page() {
 
   const { data } = await supabase.auth.getSession();
 
-  if (data.session) {
-    <Box>Log In</Box>;
+  if (!data.session) {
+    return (
+      <Link href="/login">
+        <Button size="lg">Sign In</Button>
+      </Link>
+    );
   }
 
   const { data: user } = await supabase
@@ -35,10 +39,15 @@ export default async function Page() {
     .eq('user_id', data.session?.user.id || 'a');
 
   if (!user || user.length < 1) {
-    <Box>Error</Box>;
+    return <Box>Error</Box>;
   }
 
   const profile = user[0];
+
+  if (!profile || profile === undefined) {
+    return <Box>Log In Again</Box>;
+  }
+  console.log(profile);
 
   const category = profile.category || 'Biology';
 

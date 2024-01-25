@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 'use server';
 
 import { Box, Heading, Spacer, Text, Flex, Button } from '@chakra-ui/react';
@@ -41,9 +43,10 @@ export default async function Page() {
     const requestProfile = await supabase
       .from('Users')
       .select('*')
-      .eq('user_id', f.request_author);
+      .eq('user_id', f.request_author); // @ts-ignore
     return {
       post_id: f.post_id,
+      // @ts-ignore
       requestor: requestProfile.data[0],
       created: f.created_at,
       id: f.id,
@@ -85,7 +88,7 @@ export default async function Page() {
                         <Link href={`/post/${promis.post_id}`} color="blue.100">
                           <Button my={1}>Post</Button>
                         </Link>
-                        <Link href={promis.requestor.CV} color="blue.100">
+                        <Link href={promis.requestor.CV || ''} color="blue.100">
                           <Button my={1}>CV</Button>
                         </Link>
                       </Flex>
