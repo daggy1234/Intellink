@@ -21,11 +21,10 @@ import {
   useDisclosure,
   Icon,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaHome } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
-import NextLink from 'next/link';
 
 import AuthButton from './AuthButton';
 
@@ -44,16 +43,16 @@ function MyDrawer({ isOpen, onClose }: MyDrawerProps) {
 
         <DrawerBody mr="30px">
           <VStack spacing={5} align="stretch" textAlign="center">
-            <Link href="/">
+            <NextLink href="/">
               <Button leftIcon={<Icon as={FaHome} />} w="100%" bg="brand.500">
                 Home
               </Button>
-            </Link>
-            <Link href="/">
+            </NextLink>
+            <NextLink href="/">
               <Button leftIcon={<Icon as={FaHome} />} w="100%" bg="brand.500">
                 Platform
               </Button>
-            </Link>
+            </NextLink>
             <NextLink href="/create-post" passHref>
               <Heading size="lg">New Request</Heading>
             </NextLink>
@@ -108,12 +107,12 @@ export default function Header() {
             size={{ base: 'xl', xl: '2xl' }}
             letterSpacing="-.1rem"
           >
-            <Link href="/">
+            <NextLink href="/">
               <Flex>
                 <Image mx={2} height={50} src="/intellink.png" />
                 <Heading>Intellink</Heading>
               </Flex>
-            </Link>
+            </NextLink>
           </Heading>
         </Flex>
         <HStack
@@ -124,11 +123,11 @@ export default function Header() {
           spacing={4}
           flexShrink={1}
         >
-          <Link href="/platform">
+          <NextLink href="/platform">
             <Button leftIcon={<MdDashboard />} variant="solid" bg="brand.500">
               Platform
             </Button>
-          </Link>
+          </NextLink>
           <AuthButton />
         </HStack>
 
