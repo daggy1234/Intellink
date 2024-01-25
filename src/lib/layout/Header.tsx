@@ -6,6 +6,7 @@
 import {
   Heading,
   Button,
+  Image,
   Flex,
   VStack,
   IconButton,
@@ -24,6 +25,7 @@ import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FaHome } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md';
+import NextLink from 'next/link';
 
 import AuthButton from './AuthButton';
 
@@ -52,6 +54,24 @@ function MyDrawer({ isOpen, onClose }: MyDrawerProps) {
                 Platform
               </Button>
             </Link>
+            <NextLink href="/create-post" passHref>
+              <Heading size="lg">New Request</Heading>
+            </NextLink>
+            <NextLink href="/projects" passHref>
+              <Heading size="lg"> Collab Projects</Heading>
+            </NextLink>
+            <NextLink href="/matched" passHref>
+              <Heading size="lg">Matched Projects</Heading>
+            </NextLink>
+            <NextLink href="/inbox" passHref>
+              <Heading size="lg">Inbox</Heading>
+            </NextLink>
+            <NextLink href="/my-profile" passHref>
+              <Heading size="lg">Profile</Heading>
+            </NextLink>
+            <NextLink href="/my-lab" passHref>
+              <Heading size="lg">Lab</Heading>
+            </NextLink>
           </VStack>
         </DrawerBody>
 
@@ -89,7 +109,10 @@ export default function Header() {
             letterSpacing="-.1rem"
           >
             <Link href="/">
-              <Heading>Intellink</Heading>
+              <Flex>
+                <Image mx={2} height={50} src="/intellink.png" />
+                <Heading>Intellink</Heading>
+              </Flex>
             </Link>
           </Heading>
         </Flex>
